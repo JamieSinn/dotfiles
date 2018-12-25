@@ -4,6 +4,10 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jamie/.oh-my-zsh"
 
+ZSH_TMUX_AUTOSTART=false
+ZSH_TMUX_AUTOCONNECT=false
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -67,6 +71,10 @@ plugins=(
   mvn
   debian
   git-extras
+  sublime
+  jsontools
+  tmux
+  vscode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,6 +98,9 @@ fi
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# slack dev menu
+export SLACK_DEVELOPER_MENU=true
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
