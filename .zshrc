@@ -110,3 +110,7 @@ export SLACK_DEVELOPER_MENU=true
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+asn() {
+    whois -h http://whois.cymru.com  " -v $1"
+}
