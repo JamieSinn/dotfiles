@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export ZSH_DISABLE_COMPFIX=true
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -48,7 +48,7 @@ ZSH_THEME="agnoster"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -75,6 +75,9 @@ plugins=(
   jsontools
   tmux
   vscode
+  aws
+  terraform
+  osx
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -111,6 +114,24 @@ export SLACK_DEVELOPER_MENU=true
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+
 asn() {
     whois -h http://whois.cymru.com  " -v $1"
 }
+
+
+# If running on Taplytics work computer, start at the bottom of the window
+alias taplytics_window='tput cup "$LINES"'
+
+taplytics_window
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jamiesinn/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jamiesinn/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jamiesinn/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jamiesinn/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
