@@ -78,6 +78,8 @@ plugins=(
   aws
   terraform
   osx
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -124,7 +126,8 @@ asn() {
 # If running on Taplytics work computer, start at the bottom of the window
 alias taplytics_window='tput cup "$LINES"'
 
-taplytics_window
+# Uncomment to set the prompt at the bottom of the window - used when having the terminal on the top of vertical monitors
+# taplytics_window
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jamiesinn/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jamiesinn/google-cloud-sdk/path.zsh.inc'; fi
@@ -137,3 +140,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export AWS_PROFILE=dev
+
+source ~/dotfiles/circleci_zsh.sh
