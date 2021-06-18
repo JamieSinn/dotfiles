@@ -142,3 +142,13 @@ export NVM_DIR="$HOME/.nvm"
 export AWS_PROFILE=dev
 
 source ~/dotfiles/circleci_zsh.sh
+
+function tap_prod() { 
+    export AWS_PROFILE=prod
+}
+
+function tap_dev() {
+    export AWS_PROFILE=dev
+}
+
+
