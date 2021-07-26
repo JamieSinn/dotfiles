@@ -81,7 +81,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-
+export DISABLE_UPDATE_PROMPT=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -145,10 +145,18 @@ source ~/dotfiles/circleci_zsh.sh
 
 function tap_prod() { 
     export AWS_PROFILE=prod
+    export DD_API_KEY=`cat ~/.DD_API_KEY`
+    export DATADOG_API_KEY=`cat ~/.DD_API_KEY`
+    export DD_APP_KEY=`cat ~/.DD_APP_KEY`
 }
 
 function tap_dev() {
     export AWS_PROFILE=dev
 }
 
+export CF_API_TOKEN=`cat ~/.CF_WORKERS_API_TOKEN`
+export CF_ACCOUNT_ID=`cat ~/.CF_ACCOUNT_ID`
 
+export PATH="$PATH:/home/jamiesinn/go/bin"
+export GITHUB_TOKEN=`cat ~/.GITHUB_TOKEN`
+export GOPRIVATE=github.com/taplytics
