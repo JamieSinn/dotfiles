@@ -77,7 +77,7 @@ plugins=(
   vscode
   aws
   terraform
-  osx
+  macos
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -125,7 +125,7 @@ asn() {
 
 # If running on Taplytics work computer, start at the bottom of the window
 alias taplytics_window='tput cup "$LINES"'
-
+alias fush='git push -f'
 # Uncomment to set the prompt at the bottom of the window - used when having the terminal on the top of vertical monitors
 # taplytics_window
 
@@ -139,7 +139,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export AWS_PROFILE=dev
 
 source ~/dotfiles/circleci_zsh.sh
 
@@ -148,15 +147,64 @@ function tap_prod() {
     export DD_API_KEY=`cat ~/.DD_API_KEY`
     export DATADOG_API_KEY=`cat ~/.DD_API_KEY`
     export DD_APP_KEY=`cat ~/.DD_APP_KEY`
+    export SNOWFLAKE_USER="atlantis_user"
+    export SNOWFLAKE_PRIVATE_KEY_PATH="~/.ssh/snowflake_atlantis_user_pkey"
+    export SNOWFLAKE_ACCOUNT="TAPLYTICS"
+    export SNOWFLAKE_REGION="AWS_US_EAST_1"
+    export ROLLBAR_API_KEY=`cat ~/.ROLLBAR_API_KEY`
 }
 
 function tap_dev() {
     export AWS_PROFILE=dev
 }
 
+function dvc() {
+    export AWS_PROFILE=dvc-prod
+    export MONGODB_ATLAS_PUBLIC_KEY=`cat ~/.MONGO_ATLAS_PUB_KEY`
+    export MONGODB_ATLAS_PRIVATE_KEY=`cat ~/.MONGO_ATLAS_PRIV_KEY`
+    export CLOUDFLARE_API_KEY=`cat ~/.CLOUDFLARE_API_KEY`
+    export CLOUDFLARE_API_TOKEN=""
+    export CLOUDFLARE_EMAIL="jamie.sinn@taplytics.com"
+    export SNOWFLAKE_USER="terraform"
+    export SNOWFLAKE_PRIVATE_KEY_PATH="~/.ssh/snowflake_terraform_devcycle_key"
+    export SNOWFLAKE_ACCOUNT="xwnganc-devcycle"
+    export POSTMAN_API_KEY=`cat ~/.POSTMAN_API_KEY`
+    export DD_API_KEY=`cat ~/.DVC_DD_API_KEY` 
+    export DATADOG_API_KEY=`cat ~/.DVC_DD_API_KEY` 
+    export DD_APP_KEY=`cat ~/.DVC_DD_APP_KEY`
+}
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+
+function dvc_ops() {
+    dvc
+    export AWS_PROFILE=dvc-ops
+}
+
+function tec() {
+    cd ~/git/tec
+}
+
+function t3() {
+    cd ~/git/devcycle
+}
+
+function resetbranch() {
+	 git reset $(git merge-base main $(git rev-parse --abbrev-ref HEAD)) 
+}
 export CF_API_TOKEN=`cat ~/.CF_WORKERS_API_TOKEN`
 export CF_ACCOUNT_ID=`cat ~/.CF_ACCOUNT_ID`
 
 export PATH="$PATH:/home/jamiesinn/go/bin"
 export GITHUB_TOKEN=`cat ~/.GITHUB_TOKEN`
 export GOPRIVATE=github.com/taplytics
+
+export JIRA_API_TOKEN=`cat ~/.DVC_JIRA_API_TOKEN`
+
+dvc
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Users/jamiesinn/Applications/SnowSQL.app/Contents/MacOS:$PATH
+
+# Wasmer
+export WASMER_DIR="/Users/jamiesinn/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
