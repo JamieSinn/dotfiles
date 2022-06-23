@@ -152,13 +152,15 @@ function tap_prod() {
     export SNOWFLAKE_ACCOUNT="TAPLYTICS"
     export SNOWFLAKE_REGION="AWS_US_EAST_1"
     export ROLLBAR_API_KEY=`cat ~/.ROLLBAR_API_KEY`
+    export BOOTSTRAP=`cat ~/.TL_KAFKA_BOOTSTRAP`
+    export ZOOKEEPER=`cat ~/.TL_KAFKA_ZOOKEEPER`
 }
 
 function tap_dev() {
     export AWS_PROFILE=dev
 }
 
-function dvc() {
+function dvc_prod() {
     export AWS_PROFILE=dvc-prod
     export MONGODB_ATLAS_PUBLIC_KEY=`cat ~/.MONGO_ATLAS_PUB_KEY`
     export MONGODB_ATLAS_PRIVATE_KEY=`cat ~/.MONGO_ATLAS_PRIV_KEY`
@@ -200,7 +202,7 @@ export GOPRIVATE=github.com/taplytics
 
 export JIRA_API_TOKEN=`cat ~/.DVC_JIRA_API_TOKEN`
 
-dvc
+dvc_prod
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Users/jamiesinn/Applications/SnowSQL.app/Contents/MacOS:$PATH
