@@ -3,7 +3,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_DISABLE_COMPFIX=true
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
 ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOCONNECT=false
 
@@ -212,3 +212,5 @@ export PATH=/Users/jamiesinn/Applications/SnowSQL.app/Contents/MacOS:$PATH
 # Wasmer
 export WASMER_DIR="/Users/jamiesinn/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
