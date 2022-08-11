@@ -154,6 +154,8 @@ function tap_prod() {
     export ROLLBAR_API_KEY=`cat ~/.ROLLBAR_API_KEY`
     export BOOTSTRAP=`cat ~/.TL_KAFKA_BOOTSTRAP`
     export ZOOKEEPER=`cat ~/.TL_KAFKA_ZOOKEEPER`
+    export MONGODB_ATLAS_PRIVATE_KEY=`cat ~/.TL_ATLAS_PRIVATE_KEY`
+    export MONGODB_ATLAS_PUBLIC_KEY=`cat ~/.TL_ATLAS_PUBLIC_KEY`
 }
 
 function tap_dev() {
